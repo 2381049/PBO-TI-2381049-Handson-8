@@ -1,3 +1,4 @@
+
 package services;
 
 import entities.TodoList;
@@ -6,7 +7,7 @@ import repositories.TodoListRepository;
 public class TodoListServiceImpl implements TodoListService{
     private final TodoListRepository todoListRepository;
 
-    public TodoListServiceImpl(TodoListRepository todoListRepository) {
+    public TodoListServiceImpl(final TodoListRepository todoListRepository) {
         this.todoListRepository = todoListRepository;
     }
 
@@ -16,9 +17,9 @@ public class TodoListServiceImpl implements TodoListService{
     }
 
     @Override
-    public void addTodoList(String todo) {
+    public void addTodoList(final String todo) {
         if (todo.isBlank() || todo.isEmpty()) {
-            System.out.println("Masukan todo dengan benar");
+            System.out.printf("masukkan todo dengan benar");
             return;
         }
 
@@ -38,5 +39,6 @@ public class TodoListServiceImpl implements TodoListService{
         todoList.setTodo(todo);
         todoList.setId(number);
         return todoListRepository.edit(todoList);
+
     }
 }

@@ -3,7 +3,8 @@ package repositories;
 import entities.TodoList;
 
 public class TodoListRepositoryImpl implements TodoListRepository {
-    public static TodoList[] todos = new TodoList[10];
+    public static  TodoList[] todos = new TodoList[10];
+
 
     @Override
     public TodoList[] getAll() {
@@ -53,6 +54,7 @@ public class TodoListRepositoryImpl implements TodoListRepository {
     }
 
 
+
     @Override
     public Boolean remove(Integer number) {
         if (isSelectedTodoNotValid(number)) {
@@ -90,11 +92,10 @@ public class TodoListRepositoryImpl implements TodoListRepository {
     }
 
     @Override
-    public Boolean edit(TodoList todoList) {
+    public Boolean edit(final TodoList todoList) {
         if (isSelectedTodoNotValid(todoList.getId())) {
             return false;
         }
         todos[todoList.getId() - 1] = todoList;
-        return true;
-    }
+        return true;  }
 }
